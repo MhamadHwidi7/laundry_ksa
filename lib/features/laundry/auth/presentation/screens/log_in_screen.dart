@@ -5,6 +5,7 @@ import 'package:laundry_app/core/constants/color_constants.dart';
 import 'package:laundry_app/core/constants/image_constant.dart';
 import 'package:laundry_app/core/constants/router_constants.dart';
 import 'package:laundry_app/core/constants/text_constants.dart';
+import 'package:laundry_app/core/extensions/screen_size_extension.dart';
 
 class LogInScreen extends StatelessWidget {
   const LogInScreen({super.key});
@@ -25,8 +26,8 @@ class LogInScreen extends StatelessWidget {
             ),
             Center(
               child: Container(
-                height: 206,
-                width: 353,
+                height: context.screenHeight > 600 ? 206 : 206,
+                width: context.screenWidth > 600 ? 450 : 353,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20.0),
@@ -51,7 +52,7 @@ class LogInScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: context.screenHeight > 600 ? 40 : 20,
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: 8.0, right: 8),
@@ -86,14 +87,13 @@ class LogInScreen extends StatelessWidget {
               bottom: 20,
               child: Center(
                 child: SizedBox(
-                  width: 300,
+                  width: context.screenWidth > 600 ? 350 : 300,
                   child: CupertinoButton(
                     color: ColorConstants.purpleAppColor, // Background color
                     borderRadius: BorderRadius.circular(25.0), // Border radius
 
                     onPressed: () {
-                      context
-                          .pushReplacement(RouterConstants.homeLaundryScreen);
+                      context.push(RouterConstants.logInDriverScreen);
                     },
                     child: Text(
                       'Log in',
