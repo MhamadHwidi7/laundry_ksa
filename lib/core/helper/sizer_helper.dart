@@ -1,4 +1,0 @@
-class SizerHelper {
-  SizerHelper._();
-  
-}

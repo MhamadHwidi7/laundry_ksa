@@ -5,6 +5,7 @@ import 'package:laundry_app/core/network/network_info.dart';
 import 'package:laundry_app/features/customer/auth/data/data_source/remote_data_souce.dart';
 import 'package:laundry_app/features/customer/auth/domain/entity/log_in_customer_entity.dart';
 import 'package:laundry_app/features/customer/auth/domain/entity/register_customer_entity.dart';
+import 'package:laundry_app/features/customer/auth/domain/params/forget_password_customer_params.dart';
 import 'package:laundry_app/features/customer/auth/domain/params/log_in_params.dart';
 import 'package:laundry_app/features/customer/auth/domain/params/register_customer_params.dart';
 import 'package:laundry_app/features/customer/auth/domain/repository/base_repository.dart';
@@ -44,6 +45,22 @@ class AuthCustomerRepositoryImpl implements AuthCustomerBaseRepository {
       try {
         final response = await _authCustomerBaseRemoteDataSource
             .register(registerCustomerParams);
+        return Right(response);
+      } on Exception catch (ex) {
+        return Left(NetworkExceptions.getException(ex));
+      }
+    } else {
+      return const Left(NetworkExceptions.noInternetConnection());
+    }
+  }
+
+  @override
+  Future<Either<NetworkExceptions, void>> forgetPassword(
+      ForgetPasswordCustomerParams forgetPasswordCustomerParams) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        final response = await _authCustomerBaseRemoteDataSource
+            .forgetPassword(forgetPasswordCustomerParams);
         return Right(response);
       } on Exception catch (ex) {
         return Left(NetworkExceptions.getException(ex));

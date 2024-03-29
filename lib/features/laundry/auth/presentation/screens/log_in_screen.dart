@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/core/constants/color_constants.dart';
 import 'package:laundry_app/core/constants/image_constant.dart';
@@ -43,9 +44,8 @@ class LogInScreen extends StatelessWidget {
                             color: CupertinoColors.black),
                         prefix: Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
-                          child: Image.asset(
+                          child: SvgPicture.asset(
                             ImageConstants.phoneIcon,
-                            filterQuality: FilterQuality.high,
                           ),
                         ),
                         placeholder: 'Phone Number',
@@ -59,9 +59,8 @@ class LogInScreen extends StatelessWidget {
                       child: CupertinoTextField.borderless(
                         prefix: Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
-                          child: Image.asset(
+                          child: SvgPicture.asset(
                             ImageConstants.lockIcon,
-                            filterQuality: FilterQuality.high,
                           ),
                         ),
                         placeholderStyle: TextStyle(
@@ -70,9 +69,8 @@ class LogInScreen extends StatelessWidget {
                         placeholder: 'Password',
                         suffix: Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
-                          child: Image.asset(
+                          child: SvgPicture.asset(
                             ImageConstants.eyeIcon,
-                            filterQuality: FilterQuality.high,
                           ),
                         ),
                       ),

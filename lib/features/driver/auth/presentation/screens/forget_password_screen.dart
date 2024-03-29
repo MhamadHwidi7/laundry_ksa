@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/core/constants/color_constants.dart';
 import 'package:laundry_app/core/constants/image_constant.dart';
@@ -55,14 +56,13 @@ class ForgetPasswordScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 8.0, right: 8),
                             child: CupertinoTextField.borderless(
                               placeholderStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: CupertinoColors.black,
-                              ),
+                                  fontWeight: FontWeight.bold,
+                                  color: CupertinoColors.black,
+                                  fontSize: 12),
                               prefix: Padding(
                                 padding: EdgeInsets.only(left: 10, right: 10),
-                                child: Image.asset(
+                                child: SvgPicture.asset(
                                   ImageConstants.phoneIcon,
-                                  filterQuality: FilterQuality.high,
                                 ),
                               ),
                               placeholder: TextConstants.phoneNumberText,

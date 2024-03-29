@@ -3,6 +3,7 @@ import 'package:laundry_app/core/api/api_consumer.dart';
 import 'package:laundry_app/core/api/end_points.dart';
 import 'package:laundry_app/features/customer/auth/data/model/log_in_customer_model.dart';
 import 'package:laundry_app/features/customer/auth/data/model/register_customer_model.dart';
+import 'package:laundry_app/features/customer/auth/domain/params/forget_password_customer_params.dart';
 import 'package:laundry_app/features/customer/auth/domain/params/log_in_params.dart';
 import 'package:laundry_app/features/customer/auth/domain/params/register_customer_params.dart';
 
@@ -10,6 +11,8 @@ abstract class AuthCustomerBaseRemoteDataSource {
   Future<LogInCustomerModel> logIn(LogInCustomerParams logInCustomerParams);
   Future<RegisterCustomerModel> register(
       RegisterCustomerParams registerCustomerParams);
+  Future<void> forgetPassword(
+      ForgetPasswordCustomerParams forgetPasswordCustomerParams);
 }
 
 @Singleton(as: AuthCustomerBaseRemoteDataSource)
@@ -32,5 +35,12 @@ class AuthCustomerRemoteDataSource implements AuthCustomerBaseRemoteDataSource {
     final response = await _apiConsumer.post(EndPoints.registerCustomer,
         queryParameters: registerCustomerParams.toJson());
     return response;
+  }
+
+  @override
+  Future<void> forgetPassword(
+      ForgetPasswordCustomerParams forgetPasswordCustomerParams) async {
+    return await _apiConsumer.post(EndPoints.forgetPasswordCustomer,
+        queryParameters: forgetPasswordCustomerParams.toJson());
   }
 }

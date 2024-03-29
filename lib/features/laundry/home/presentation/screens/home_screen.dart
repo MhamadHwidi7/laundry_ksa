@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/core/constants/color_constants.dart';
 import 'package:laundry_app/core/constants/image_constant.dart';
 import 'package:laundry_app/core/constants/router_constants.dart';
 import 'package:laundry_app/core/constants/text_constants.dart';
 import 'package:laundry_app/core/extensions/screen_size_extension.dart';
+import 'package:laundry_app/features/laundry/home/presentation/widgets/order_card_list_view_widget.dart';
+import 'package:laundry_app/features/laundry/home/presentation/widgets/text_header_list_card_widget.dart';
 
 class HomeLaundryScreen extends StatelessWidget {
   const HomeLaundryScreen({super.key});
@@ -16,18 +20,17 @@ class HomeLaundryScreen extends StatelessWidget {
       backgroundColor: ColorConstants.backGroundAppColor,
       navigationBar: CupertinoNavigationBar(
         backgroundColor: ColorConstants.backGroundAppColor,
-        border: Border(),
+        border: const Border(),
         trailing: Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: GestureDetector(
             onTap: () => context.push(RouterConstants.earningScreen),
-            child: Image.asset(
+            child: SvgPicture.asset(
               ImageConstants.earningsIcon,
-              filterQuality: FilterQuality.high,
             ),
           ),
         ),
-        leading: Text(
+        leading: const Text(
           "Today's Order",
           style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -63,24 +66,28 @@ class OrderCard extends StatelessWidget {
   final String name;
   final List<String> items;
 
-  const OrderCard({Key? key, required this.name, required this.items})
-      : super(key: key);
+  const OrderCard({super.key, required this.name, required this.items});
 
   @override
   Widget build(BuildContext context) {
+    List<String> k = [
+      '3x Thob', '1x Shirt', '3x Thob', '1x Shirt',
+      'Item 3',
+      // Add more items as needed
+    ];
     return Stack(
       children: [
         Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
-            side: BorderSide(
+            side: const BorderSide(
               color: ColorConstants.greenAppColor,
               width: 3,
             ),
           ),
-          margin: EdgeInsets.all(8.0),
+          margin: const EdgeInsets.all(8.0),
           child: Padding(
-            padding: EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
@@ -109,81 +116,32 @@ class OrderCard extends StatelessWidget {
                       ? 20
                       : context.screenHeight * 0.02,
                 ),
+                const TextHeaderListCardWidget(),
                 Row(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: context.screenWidth > 600
-                              ? 50
-                              : context.screenWidth * 0.1),
-                      child: Text(
-                        TextConstants.laundryAndIronText,
-                        style: TextStyle(
-                            fontFamily: TextConstants.openSans,
-                            fontWeight: FontWeight.bold),
+                    OrderCardListView(
+                      items: k,
+                    ),
+                    const SizedBox(
+                      height: 150,
+                      width: 2,
+                      child: VerticalDivider(
+                        color: CupertinoColors.systemGrey,
                       ),
                     ),
-                    Spacer(),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          right: context.screenWidth > 600
-                              ? 80
-                              : context.screenWidth * 0.1),
-                      child: Text(
-                        TextConstants.ironText,
-                        style: TextStyle(
-                            fontFamily: TextConstants.openSans,
-                            fontWeight: FontWeight.bold),
+                    OrderCardListView(
+                      items: k,
+                    ),
+                    const SizedBox(
+                      height: 150,
+                      width: 2,
+                      child: VerticalDivider(
+                        color: CupertinoColors.systemGrey,
                       ),
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: context.screenHeight > 600
-                      ? 20
-                      : context.screenHeight * 0.01,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: context.screenWidth * 0.03,
-                              vertical: context.screenHeight * 0.005),
-                          child: Text("3 x thoab"),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: context.screenWidth * 0.03,
-                              vertical: context.screenHeight * 0.005),
-                          child: Text("3 x thoab"),
-                        ),
-                      ],
+                    OrderCardListView(
+                      items: k,
                     ),
-                    Padding(
-                      padding:
-                          EdgeInsets.only(right: context.screenWidth * 0.08),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: context.screenWidth * 0.03,
-                                vertical: context.screenHeight * 0.005),
-                            child: Text("3 x thoasss"),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: context.screenWidth * 0.03,
-                                vertical: context.screenHeight * 0.005),
-                            child: Text("2 x thoa"),
-                          ),
-                        ],
-                      ),
-                    )
                   ],
                 ),
                 SizedBox(
@@ -198,7 +156,7 @@ class OrderCard extends StatelessWidget {
         Positioned(
           left: context.getImagePositionForScreen.left,
           bottom: context.getImagePositionForScreen.bottom,
-          child: Image.asset(
+          child: SvgPicture.asset(
             ImageConstants.checkCircleIcon,
             color: ColorConstants.greenAppColor,
             width:
