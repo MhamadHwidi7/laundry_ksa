@@ -26,7 +26,7 @@ class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
         backgroundColor: ColorConstants.backGroundAppColor,
         border: const Border(),
         trailing: Padding(
-          padding: const EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.only(bottom: 11),
           child: GestureDetector(
               onTap: () => context.push(RouterConstants.accomplishmentsScreen),
               child: ImageHelper(
