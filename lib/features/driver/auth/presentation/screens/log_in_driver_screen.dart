@@ -109,7 +109,10 @@ class LogInDriverScreen extends StatelessWidget {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    onPressed: () {})),
+                                    onPressed: () {
+                                      context.push(RouterConstants
+                                          .forgetPasswordDriverScreen);
+                                    })),
                           ],
                         ),
                       ],

@@ -9,8 +9,8 @@ import 'package:laundry_app/core/constants/router_constants.dart';
 import 'package:laundry_app/core/constants/text_constants.dart';
 import 'package:laundry_app/core/extensions/screen_size_extension.dart';
 
-class ForgetPasswordScreen extends StatelessWidget {
-  const ForgetPasswordScreen({super.key});
+class ForgetPasswordDriverScreen extends StatelessWidget {
+  const ForgetPasswordDriverScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +122,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25.0),
                     onPressed: () {
                       context
-                          .pushReplacement(RouterConstants.homeLaundryScreen);
+                          .go(RouterConstants.logInDriverScreen);
                     },
                     child: Text(
                       TextConstants.submitText,

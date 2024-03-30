@@ -13,4 +13,9 @@ class ImageConstants {
   static const String phoneOutlineIcon = 'assets/icons/phone-Bold_1_.svg';
   static const String arrowRightIcon = 'assets/icons/chevron-circle-right.svg';
   static const String arrowLeftIcon = 'assets/icons/chevron-circle-left-.svg';
+  static const String mapMarkerIcon = 'assets/icons/map-marker-Filled_1_.png';
+  static const String laundryIcon = 'assets/icons/laundry.svg';
+  static const String settingIcon = 'assets/icons/settings-Bold.svg';
+  static const String arrowNextSeeAllIcon =
+      'assets/icons/ic_keyboard_arrow_up.svg';
 }

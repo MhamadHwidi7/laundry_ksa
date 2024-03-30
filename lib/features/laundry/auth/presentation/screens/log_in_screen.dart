@@ -91,7 +91,7 @@ class LogInScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25.0), // Border radius
 
                     onPressed: () {
-                      context.push(RouterConstants.logInDriverScreen);
+                      context.push(RouterConstants.setLocationScreen);
                     },
                     child: Text(
                       'Log in',

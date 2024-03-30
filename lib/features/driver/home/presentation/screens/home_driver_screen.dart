@@ -25,7 +25,7 @@ class HomeDriverScreen extends StatelessWidget {
         trailing: Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: GestureDetector(
-            onTap: () => context.push(RouterConstants.earningScreen),
+            onTap: () => context.push(RouterConstants.accomplishmentsScreen),
             child: SvgPicture.asset(
               ImageConstants.earningsIcon,
             ),

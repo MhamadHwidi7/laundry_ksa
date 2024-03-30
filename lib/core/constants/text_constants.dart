@@ -12,6 +12,8 @@ class TextConstants {
   static const String forgetPasswordText = "Forget Password";
   static const String phoneNumberText = "Phone Number";
   static const String emailText = "Email";
+  static const String yourEarningsText = "Your Eearnings";
+  static const String yourAccomplishmentsText = "Your Accomplishments";
 
   static const String containerBoxForgetPasswordText =
       "  You will receive a temporary password via SMS, valid   ";
@@ -25,4 +27,16 @@ class TextConstants {
       "Apply to become a Driver!";
   static const String applyToBecomeADriverAppBarText =
       "Apply to become a Driver";
+  static const String saveText = "Save";
+  static const String infoWindowSetLocationText =
+      "Move the pin to select your location";
+  static const String addressDetailsLocationText =
+      "Your address details will be given to courier.";
+  static const String apartmentNumberText = "Apartment Number";
+  static const String buildingNumberText = "Building Number";
+  static const String villaText = "Villa";
+  static const String apartmentText = "Apartment";
+  static const String homeTypeText = "Home Type :";
+  static const String addressDetailsText = "Address Details";
+  static const String deliveryLocationText = "Delivery Location";
 }
