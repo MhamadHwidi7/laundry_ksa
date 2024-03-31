@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:laundry_app/core/constants/color_constants.dart';
 import 'package:laundry_app/core/constants/image_constant.dart';
+import 'package:laundry_app/core/constants/router_constants.dart';
 import 'package:laundry_app/core/constants/text_constants.dart';
 import 'package:laundry_app/core/extensions/screen_size_extension.dart';
 
@@ -39,9 +41,21 @@ class MapSampleState extends State<MapSample> {
   }
 
   @override
+  void initState() {
+    addMarkers();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       child: GoogleMap(
+        myLocationEnabled: true,
+        padding: EdgeInsets.only(top: 0, right: 0, left: 0),
+        myLocationButtonEnabled: true,
+        compassEnabled: true,
+        mapToolbarEnabled: true,
         mapType: MapType.normal,
         initialCameraPosition: CameraPosition(
           target: startLocation,
@@ -174,6 +188,8 @@ class SetLocationScreen extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
+
+                  ///TODO:make it when complete the getxcontroller for the radio button
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,7 +238,9 @@ class SetLocationScreen extends StatelessWidget {
                       child: CupertinoButton(
                         color: ColorConstants.purpleAppColor,
                         borderRadius: BorderRadius.circular(25.0),
-                        onPressed: () {},
+                        onPressed: () {
+                          context.push(RouterConstants.settingScreen);
+                        },
                         child: Text(
                           TextConstants.saveText,
                           style: TextStyle(color: Colors.white),

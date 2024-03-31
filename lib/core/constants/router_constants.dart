@@ -12,4 +12,6 @@ class RouterConstants {
   static const String setLocationScreen = "/set-location-screen";
   static const String accomplishmentsScreen = "/accomplishments-screen";
   static const String customerHomeScreen = "/home-customer-screen";
+  static const String settingScreen = "/setting-screen";
+  static const String accountDetailsScreen = "/account-details-screen-screen";
 }

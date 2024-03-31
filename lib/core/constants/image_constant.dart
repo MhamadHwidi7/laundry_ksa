@@ -14,8 +14,17 @@ class ImageConstants {
   static const String arrowRightIcon = 'assets/icons/chevron-circle-right.svg';
   static const String arrowLeftIcon = 'assets/icons/chevron-circle-left-.svg';
   static const String mapMarkerIcon = 'assets/icons/map-marker-Filled_1_.png';
+  static const String mapMarkerSvgIcon =
+      'assets/icons/map-marker-Filled_1_.svg';
+
   static const String laundryIcon = 'assets/icons/laundry.svg';
   static const String settingIcon = 'assets/icons/settings-Bold.svg';
   static const String arrowNextSeeAllIcon =
       'assets/icons/ic_keyboard_arrow_up.svg';
+  static const String settingCustomerIcon = 'assets/icons/settings-account.svg';
+  static const String preferencesIcon = 'assets/icons/preferences.svg';
+  static const String termsIcon = 'assets/icons/terms.svg';
+  static const String helpIcon = 'assets/icons/help.svg';
+  static const String cardIcon = 'assets/icons/Card.svg';
+  static const String editIcon = 'assets/icons/editaccountdetails.svg';
 }

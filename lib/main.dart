@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp.router(
-      theme: CupertinoThemeData(primaryColor: ColorConstants.greenAppColor),
+      theme: CupertinoThemeData(primaryColor: ColorConstants.greyTextColor),
       debugShowCheckedModeBanner: false,
       title: 'Laundry App',
       locale: DevicePreview.locale(context),
