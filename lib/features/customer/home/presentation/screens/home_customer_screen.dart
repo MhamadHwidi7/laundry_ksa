@@ -9,6 +9,7 @@ import 'package:laundry_app/core/constants/router_constants.dart';
 import 'package:laundry_app/core/constants/text_constants.dart';
 import 'package:laundry_app/core/extensions/screen_size_extension.dart';
 import 'package:laundry_app/core/helper/image_helper.dart';
+import 'package:laundry_app/features/customer/home/presentation/widgets/subscription_widget.dart';
 
 class HomeCustomerScreen extends StatefulWidget {
   const HomeCustomerScreen({super.key});
@@ -206,7 +207,7 @@ class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
                 scrollDirection: Axis.horizontal,
                 itemCount: 2,
                 itemBuilder: (context, index) {
-                  return SubscriptionsWidget(points: "19");
+                  return const SubscriptionsWidget(points: "19");
                 },
               ),
             ),
@@ -216,7 +217,7 @@ class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
                 scrollDirection: Axis.horizontal,
                 itemCount: 2,
                 itemBuilder: (context, index) {
-                  return SubscriptionsWidget(points: "30");
+                  return const SubscriptionsWidget(points: "30");
                 },
               ),
             ),
@@ -242,7 +243,7 @@ class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
       height: 100,
       child: Card(
         color: ColorConstants.backGroundAppColor,
-        margin: EdgeInsets.all(8.0),
+        margin: const EdgeInsets.all(8.0),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -251,11 +252,11 @@ class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
             children: <Widget>[
               Text(
                 date,
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
               ),
               Text(
                 price,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 18, // Adjusted font size
                   color: CupertinoColors.black,
                   fontFamily: TextConstants.openSans,
@@ -264,7 +265,7 @@ class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
               ),
               Text(
                 text,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 12, // Adjusted font size
                   color: ColorConstants.purpleAppColor,
                   fontFamily: TextConstants.openSans,
