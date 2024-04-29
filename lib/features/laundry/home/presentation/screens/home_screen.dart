@@ -1,18 +1,36 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/core/constants/color_constants.dart';
 import 'package:laundry_app/core/constants/image_constant.dart';
 import 'package:laundry_app/core/constants/router_constants.dart';
 import 'package:laundry_app/core/constants/text_constants.dart';
+import 'package:laundry_app/core/errors/network_exceptions.dart';
 import 'package:laundry_app/core/extensions/screen_size_extension.dart';
+import 'package:laundry_app/features/laundry/home/domain/entity/laundry_order_entity.dart';
+import 'package:laundry_app/features/laundry/home/presentation/controllers/laundry_orders_cubit.dart';
 import 'package:laundry_app/features/laundry/home/presentation/widgets/order_card_list_view_widget.dart';
 import 'package:laundry_app/features/laundry/home/presentation/widgets/text_header_list_card_widget.dart';
 
-class HomeLaundryScreen extends StatelessWidget {
-  const HomeLaundryScreen({super.key});
+class HomeLaundryScreen extends StatefulWidget {
+  final String laundryId;
+  const HomeLaundryScreen({super.key, required this.laundryId});
+
+  @override
+  State<HomeLaundryScreen> createState() => _HomeLaundryScreenState();
+}
+
+class _HomeLaundryScreenState extends State<HomeLaundryScreen> {
+  @override
+  void initState() {
+    context.read<LaundryOrdersCubit>().emitGetLaundryOrders();
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +42,8 @@ class HomeLaundryScreen extends StatelessWidget {
         trailing: Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: GestureDetector(
-            onTap: () => context.push(RouterConstants.earningScreen),
+            onTap: () => context
+                .push('${RouterConstants.earningScreen}/${widget.laundryId}'),
             child: SvgPicture.asset(
               ImageConstants.earningsIcon,
             ),
@@ -39,49 +58,49 @@ class HomeLaundryScreen extends StatelessWidget {
         ),
       ),
       child: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              OrderCard(
-                name: 'Ahmad Khalil',
-                items: ['3x Thob', '2x Shumagh'],
-              ),
-              OrderCard(
-                name: 'Ali Hasan',
-                items: ['3x Shirt', '2x Pants'],
-              ),
-              OrderCard(
-                name: 'Tahin Ziyada',
-                items: ['3x Thob', '1x Shirt'],
-              ),
-            ],
+        child: BlocConsumer<LaundryOrdersCubit, LaundryOrdersState>(
+          listener: (context, state) => state.whenOrNull(
+            error: (NetworkExceptions networkExceptions) =>
+                Fluttertoast.showToast(
+                    msg: NetworkExceptions.getErrorMessage(networkExceptions),
+                    toastLength: Toast.LENGTH_SHORT),
           ),
+          builder: (context, state) {
+            return state.when(
+              loading: () => const Center(child: CupertinoActivityIndicator()),
+              success: (baseLaundryOrderEntity) => ListView.builder(
+                itemBuilder: (context, index) => OrderCard(
+                  name: baseLaundryOrderEntity.customerName,
+                  baseLaundryOrderEntity: baseLaundryOrderEntity,
+                ),
+              ),
+              error: (networkExceptions) => const SizedBox.shrink(),
+            );
+          },
         ),
       ),
     );
   }
 }
 
-class OrderCard extends StatelessWidget {
+class OrderCard<T> extends StatelessWidget {
   final String name;
-  final List<String> items;
+  final BaseLaundryOrderEntity baseLaundryOrderEntity;
 
-  const OrderCard({super.key, required this.name, required this.items});
+  const OrderCard(
+      {super.key, required this.name, required this.baseLaundryOrderEntity});
 
   @override
   Widget build(BuildContext context) {
-    List<String> k = [
-      '3x Thob', '1x Shirt', '3x Thob', '1x Shirt',
-      'Item 3',
-      // Add more items as needed
-    ];
     return Stack(
       children: [
         Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
-            side: const BorderSide(
-              color: ColorConstants.greenAppColor,
+            side: BorderSide(
+              color: baseLaundryOrderEntity.status == "picked"
+                  ? ColorConstants.greenAppColor
+                  : ColorConstants.greyBlackColor,
               width: 3,
             ),
           ),
@@ -120,7 +139,7 @@ class OrderCard extends StatelessWidget {
                 Row(
                   children: [
                     OrderCardListView(
-                      items: k,
+                      items: baseLaundryOrderEntity.both,
                     ),
                     const SizedBox(
                       height: 150,
@@ -130,7 +149,7 @@ class OrderCard extends StatelessWidget {
                       ),
                     ),
                     OrderCardListView(
-                      items: k,
+                      items: baseLaundryOrderEntity.iron,
                     ),
                     const SizedBox(
                       height: 150,
@@ -140,7 +159,7 @@ class OrderCard extends StatelessWidget {
                       ),
                     ),
                     OrderCardListView(
-                      items: k,
+                      items: baseLaundryOrderEntity.clean,
                     ),
                   ],
                 ),
@@ -158,7 +177,10 @@ class OrderCard extends StatelessWidget {
           bottom: context.getImagePositionForScreen.bottom,
           child: SvgPicture.asset(
             ImageConstants.checkCircleIcon,
-            color: ColorConstants.greenAppColor,
+            color: (baseLaundryOrderEntity.status == "finished" ||
+                    baseLaundryOrderEntity.status == "delivered")
+                ? ColorConstants.greenAppColor
+                : ColorConstants.greyBlackColor,
             width:
                 context.screenWidth > 600 ? 60 : context.getIconSizeForScreen,
             height:

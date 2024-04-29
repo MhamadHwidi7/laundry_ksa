@@ -27,4 +27,8 @@ class ImageConstants {
   static const String helpIcon = 'assets/icons/help.svg';
   static const String cardIcon = 'assets/icons/Card.svg';
   static const String editIcon = 'assets/icons/editaccountdetails.svg';
+  static const String calendarIcon = 'assets/icons/calendar-Bold_1_.svg';
+  static const String visaIcon = 'assets/icons/Visa.svg';
+  static const String madaIcon = 'assets/icons/mada.svg';
+  static const String carrierIcon = 'assets/icons/SVGRepo_iconCarrier.svg';
 }

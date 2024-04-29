@@ -39,4 +39,7 @@ class TextConstants {
   static const String homeTypeText = "Home Type :";
   static const String addressDetailsText = "Address Details";
   static const String deliveryLocationText = "Delivery Location";
+  static const String villaNumberText = "Villa Number";
+  static const String addNewCardText = "Add New Card";
+  static const String addText = "Add";
 }

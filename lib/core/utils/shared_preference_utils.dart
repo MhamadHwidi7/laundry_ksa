@@ -1,12 +1,11 @@
 import 'package:flutter/foundation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@singleton
 class SharedPreferencesUtils {
   late SharedPreferences _prefs;
+  bool _isPrefsInitialized = false; // New field to track initialization
 
-  SharedPreferencesUtils._(); // Private constructor
+  SharedPreferencesUtils._();
 
   static final SharedPreferencesUtils _instance = SharedPreferencesUtils._();
 
@@ -16,36 +15,32 @@ class SharedPreferencesUtils {
 
   Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
+    _isPrefsInitialized = true; // Set true once initialized
   }
 
   Future<void> _initialize() {
-    return init();
+    return _isPrefsInitialized ? Future.value() : init();
   }
 
   Future<void> setToken(String token) async {
-    await _initialize(); 
+    await _initialize();
     _prefs.setString('token', token);
   }
 
   String? getToken() {
     if (!_isInitialized()) {
       print('SharedPreferences has not been initialized yet.');
+      return null; // Return null if not initialized
     }
     return _prefs.getString('token');
   }
 
   Future<void> removeToken() async {
-    await _initialize(); 
+    await _initialize();
     await _prefs.remove('token');
   }
 
   bool _isInitialized() {
-    if (_prefs == null) {
-      if (kDebugMode) {
-        print('SharedPreferences has not been initialized yet.');
-      }
-      return false;
-    }
-    return true;
+    return _isPrefsInitialized; // Use the new field for checks
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/core/constants/color_constants.dart';
@@ -33,7 +32,8 @@ class ForgetPasswordDriverScreen extends StatelessWidget {
         ),
       ),
       child: SafeArea(
-        child: Stack(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -51,53 +51,53 @@ class ForgetPasswordDriverScreen extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8.0, right: 8),
-                            child: CupertinoTextField.borderless(
-                              placeholderStyle: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: CupertinoColors.black,
-                                  fontSize: 12),
-                              prefix: Padding(
-                                padding: EdgeInsets.only(left: 10, right: 10),
-                                child: SvgPicture.asset(
-                                  ImageConstants.phoneIcon,
-                                ),
+                        SizedBox(
+                          height: context.screenHeight * 0.05,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0, right: 8),
+                          child: CupertinoTextField.borderless(
+                            placeholderStyle: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: CupertinoColors.black,
+                                fontSize: 12),
+                            prefix: Padding(
+                              padding: EdgeInsets.only(left: 10, right: 10),
+                              child: SvgPicture.asset(
+                                ImageConstants.phoneIcon,
                               ),
-                              placeholder: TextConstants.phoneNumberText,
                             ),
+                            placeholder: TextConstants.phoneNumberText,
                           ),
                         ),
+                        SizedBox(
+                          height: context.screenHeight * 0.09,
+                        ),
                         FittedBox(
-                          child: Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Padding(
-                              padding: const EdgeInsets.only(bottom: 8),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    TextConstants
-                                        .containerBoxForgetPasswordText,
-                                    style: TextStyle(
-                                      color: CupertinoColors.black,
-                                      fontFamily: TextConstants.openSans,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15,
-                                    ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  TextConstants.containerBoxForgetPasswordText,
+                                  style: TextStyle(
+                                    color: CupertinoColors.black,
+                                    fontFamily: TextConstants.openSans,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
                                   ),
-                                  Text(
-                                    TextConstants.for24HoursText,
-                                    style: TextStyle(
-                                      color: CupertinoColors.black,
-                                      fontFamily: TextConstants.openSans,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                ),
+                                Text(
+                                  TextConstants.for24HoursText,
+                                  style: TextStyle(
+                                    color: CupertinoColors.black,
+                                    fontFamily: TextConstants.openSans,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -105,29 +105,20 @@ class ForgetPasswordDriverScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: context.screenHeight > 600 ? 300 : 600,
-                ),
               ],
             ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 20,
-              child: Center(
-                child: SizedBox(
-                  width: context.screenWidth > 600 ? 350 : 300,
-                  child: CupertinoButton(
-                    color: ColorConstants.purpleAppColor,
-                    borderRadius: BorderRadius.circular(25.0),
-                    onPressed: () {
-                      context
-                          .go(RouterConstants.logInDriverScreen);
-                    },
-                    child: Text(
-                      TextConstants.submitText,
-                      style: TextStyle(color: Colors.white),
-                    ),
+            Center(
+              child: SizedBox(
+                width: context.screenWidth > 600 ? 350 : 300,
+                child: CupertinoButton(
+                  color: ColorConstants.purpleAppColor,
+                  borderRadius: BorderRadius.circular(25.0),
+                  onPressed: () {
+                    context.push(RouterConstants.applyBecomingDriverScreen);
+                  },
+                  child: Text(
+                    TextConstants.submitText,
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ),

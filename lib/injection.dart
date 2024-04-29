@@ -3,7 +3,6 @@ import 'package:injectable/injectable.dart';
 import 'package:laundry_app/injection.config.dart';
 
 final getIt = GetIt.instance;
-
 @InjectableInit(
   initializerName: 'init',
   preferRelativeImports: true,

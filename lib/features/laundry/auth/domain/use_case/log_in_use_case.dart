@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:laundry_app/core/errors/network_exceptions.dart';
+import 'package:laundry_app/features/laundry/auth/domain/entity/log_in_entity.dart';
 import 'package:laundry_app/features/laundry/auth/domain/params/log_in_params.dart';
 import 'package:laundry_app/features/laundry/auth/domain/repository/base_repository.dart';
 
@@ -11,7 +12,7 @@ class LogInLaundryUseCase {
   LogInLaundryUseCase(
       {required AuthLaundryBaseRepository authLaundryBaseRepository})
       : _authLaundryBaseRepository = authLaundryBaseRepository;
-  Future<Either<NetworkExceptions, void>> call(
+  Future<Either<NetworkExceptions, LogInLaundryEntity>> call(
       LogInLaundryParams logInLaundryParams) async {
     return _authLaundryBaseRepository.logIn(logInLaundryParams);
   }

@@ -21,7 +21,7 @@ class ApplyBecomingDriverScreen extends StatelessWidget {
         backgroundColor: ColorConstants.backGroundAppColor,
         automaticallyImplyLeading: true,
         middle: Padding(
-          padding: EdgeInsets.only(right: context.screenWidth * 0.17),
+          padding: EdgeInsets.only(right: context.screenWidth * 0.26),
           child: Text(
             TextConstants.applyToBecomeADriverAppBarText,
             style: TextStyle(
@@ -33,7 +33,8 @@ class ApplyBecomingDriverScreen extends StatelessWidget {
         ),
       ),
       child: SafeArea(
-        child: Stack(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -43,7 +44,7 @@ class ApplyBecomingDriverScreen extends StatelessWidget {
                 ),
                 Center(
                   child: Container(
-                    height: context.screenHeight > 600 ? 206 : 206,
+                    height: context.screenHeight > 600 ? 277 : 277,
                     width: context.screenWidth > 600 ? 450 : 353,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -51,41 +52,46 @@ class ApplyBecomingDriverScreen extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8.0, right: 8),
-                            child: CupertinoTextField.borderless(
-                              placeholderStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: CupertinoColors.black,
-                              ),
-                              prefix: Padding(
-                                padding: EdgeInsets.only(left: 10, right: 10),
-                                child: SvgPicture.asset(
-                                  ImageConstants.userIcon,
-                                ),
-                              ),
-                              placeholder: TextConstants.fullNameText,
+                        SizedBox(
+                          height: context.screenHeight * 0.05,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0, right: 8),
+                          child: CupertinoTextField.borderless(
+                            placeholderStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: CupertinoColors.black,
                             ),
+                            prefix: Padding(
+                              padding: EdgeInsets.only(left: 10, right: 10),
+                              child: SvgPicture.asset(
+                                ImageConstants.userIcon,
+                              ),
+                            ),
+                            placeholder: TextConstants.fullNameText,
                           ),
                         ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 8.0, right: 8),
-                            child: CupertinoTextField.borderless(
-                              placeholderStyle: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: CupertinoColors.black,
-                              ),
-                              prefix: Padding(
-                                padding: EdgeInsets.only(left: 10, right: 10),
-                                child: SvgPicture.asset(
-                                  ImageConstants.phoneIcon,
-                                ),
-                              ),
-                              placeholder: TextConstants.phoneNumberText,
+                        SizedBox(
+                          height: context.screenHeight * 0.03,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0, right: 8),
+                          child: CupertinoTextField.borderless(
+                            placeholderStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: CupertinoColors.black,
                             ),
+                            prefix: Padding(
+                              padding: EdgeInsets.only(left: 10, right: 10),
+                              child: SvgPicture.asset(
+                                ImageConstants.phoneIcon,
+                              ),
+                            ),
+                            placeholder: TextConstants.phoneNumberText,
                           ),
+                        ),
+                        SizedBox(
+                          height: context.screenHeight * 0.06,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -93,10 +99,6 @@ class ApplyBecomingDriverScreen extends StatelessWidget {
                             SizedBox(
                               width: 20,
                             ),
-//                             here make me this I want to make like a very small text and wrap it in anything to make border for it to make
-// Select your Preferred District(s)
-// and make on the right a icon to down which show I can click soon it and open pops-menu like this
-
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -106,7 +108,7 @@ class ApplyBecomingDriverScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     border: Border.all(
                                       color: Colors
-                                          .grey, // You can customize the border color
+                                          .grey,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(20),
@@ -160,29 +162,22 @@ class ApplyBecomingDriverScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: context.screenHeight > 600 ? 300 : 600,
-                ),
+                // SizedBox(
+                //   height: context.screenHeight > 600 ? 300 : 600,
+                // ),
               ],
             ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 20,
-              child: Center(
-                child: SizedBox(
-                  width: context.screenWidth > 600 ? 350 : 300,
-                  child: CupertinoButton(
-                    color: ColorConstants.purpleAppColor,
-                    borderRadius: BorderRadius.circular(25.0),
-                    onPressed: () {
-                      context.go(RouterConstants.logInDriverScreen);
-                    },
-                    child: Text(
-                      TextConstants.submitText,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
+            SizedBox(
+              width: context.screenWidth > 600 ? 350 : 300,
+              child: CupertinoButton(
+                color: ColorConstants.purpleAppColor,
+                borderRadius: BorderRadius.circular(25.0),
+                onPressed: () {
+                  context.go(RouterConstants.logInDriverScreen);
+                },
+                child: Text(
+                  TextConstants.submitText,
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),

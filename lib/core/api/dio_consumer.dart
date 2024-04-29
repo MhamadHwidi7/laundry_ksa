@@ -7,6 +7,7 @@ import 'package:laundry_app/core/api/api_consumer.dart';
 import 'package:laundry_app/core/api/end_points.dart';
 import 'package:laundry_app/core/api/logging_interceptor.dart';
 import 'package:laundry_app/core/constants/string_constants.dart';
+import 'package:laundry_app/core/utils/shared_preference_utils.dart';
 import 'package:laundry_app/injection.dart';
 
 @Singleton(as: ApiConsumer)
@@ -34,6 +35,7 @@ class DioConsumer implements ApiConsumer {
     _headers = {
       StringsConstants.accept: StringsConstants.applicationJson,
       StringsConstants.contentType: StringsConstants.applicationJson,
+      StringsConstants.authorization : "3 ${SharedPreferencesUtils().getToken()}"
     };
   }
 

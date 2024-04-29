@@ -5,6 +5,8 @@ import 'package:laundry_app/core/constants/color_constants.dart';
 import 'package:laundry_app/core/constants/image_constant.dart';
 import 'package:laundry_app/core/constants/text_constants.dart';
 import 'package:laundry_app/core/extensions/screen_size_extension.dart';
+import 'package:laundry_app/features/customer/home/presentation/components/current_subscription_component.dart';
+import 'package:laundry_app/features/customer/home/presentation/components/on_demand_order_component.dart';
 
 ///TODO:make it tomorrow
 class AccountDetailsScreen extends StatelessWidget {
@@ -30,10 +32,7 @@ class AccountDetailsScreen extends StatelessWidget {
           ),
         ),
       ),
-      child: SafeArea(
-          child: Column(
-        children: [_buildListTile(() {})],
-      )),
+      child: SafeArea(child: CurrentSubscriptionComponent()),
     );
   }
 

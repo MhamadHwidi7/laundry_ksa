@@ -1,5 +1,5 @@
 class LogInLaundryParams {
-  final int phoneNumber;
+  final String phoneNumber;
   final String password;
 
   LogInLaundryParams({required this.phoneNumber, required this.password});

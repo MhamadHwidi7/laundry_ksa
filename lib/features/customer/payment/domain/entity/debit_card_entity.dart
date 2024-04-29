@@ -1,24 +1,20 @@
-// import 'package:isar/isar.dart';
+import 'package:isar/isar.dart';
 
-// part 'reservation_entity.g.dart';
+part 'debit_card_entity.g.dart';
 
-// @collection
-// class DebitCardEntity {
-//   DebitCardEntity({
-//     required this.holderName,
-//     required this.reservationPrice,
-//     required this.reservationDate,
-//     required this.mobileNumber,
-//     required this.reservationPeriod,
-//     required this.hallName,
-//   });
+@collection
+class DebitCardEntity {
+  DebitCardEntity({
+    required this.holderName,
+    required this.cardExpDate,
+    required this.cardNumber,
+    required this.cvvCode,
+  });
 
-//   Id id = Isar.autoIncrement;
-//   @Index()
-//   late String holderName;
-//   late double reservationPrice;
-//   late DateTime reservationDate;
-//   late int mobileNumber;
-//   late String reservationPeriod;
-//   late String hallName;
-// }
+  Id id = Isar.autoIncrement;
+  @Index()
+  late String holderName;
+  late DateTime cardExpDate;
+  late int cardNumber;
+  late int cvvCode;
+}

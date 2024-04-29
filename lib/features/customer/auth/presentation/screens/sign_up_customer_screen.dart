@@ -238,7 +238,7 @@ class SignUpCustomerScreen extends StatelessWidget {
                 color: ColorConstants.purpleAppColor,
                 borderRadius: BorderRadius.circular(25.0),
                 onPressed: () {
-                  context.pushReplacement(RouterConstants.driverHomeScreen);
+                  context.pushReplacement(RouterConstants.setLocationScreen);
                 },
                 child: Text(
                   TextConstants.signUpButtonText,

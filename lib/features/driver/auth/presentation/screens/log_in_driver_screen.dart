@@ -148,8 +148,7 @@ class LogInDriverScreen extends StatelessWidget {
                     color: ColorConstants.purpleAppColor,
                     borderRadius: BorderRadius.circular(25.0),
                     onPressed: () {
-                      context
-                          .pushReplacement(RouterConstants.homeLaundryScreen);
+                      context.pushReplacement(RouterConstants.driverHomeScreen);
                     },
                     child: Text(
                       TextConstants.loginButtonText,

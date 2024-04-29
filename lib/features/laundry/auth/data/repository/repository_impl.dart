@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:laundry_app/core/errors/network_exceptions.dart';
 import 'package:laundry_app/core/network/network_info.dart';
 import 'package:laundry_app/features/laundry/auth/data/data_source/remote_data_souce.dart';
+import 'package:laundry_app/features/laundry/auth/domain/entity/log_in_entity.dart';
 import 'package:laundry_app/features/laundry/auth/domain/params/log_in_params.dart';
 import 'package:laundry_app/features/laundry/auth/domain/repository/base_repository.dart';
 
@@ -18,7 +19,7 @@ class AuthLaundryRepositoryImpl implements AuthLaundryBaseRepository {
         _authLaundryBaseRemoteDataSource = authLaundryBaseRemoteDataSource;
 
   @override
-  Future<Either<NetworkExceptions, void>> logIn(
+  Future<Either<NetworkExceptions, LogInLaundryEntity>> logIn(
       LogInLaundryParams logInLaundryParams) async {
     if (await _networkInfo.isConnected) {
       try {
@@ -26,7 +27,7 @@ class AuthLaundryRepositoryImpl implements AuthLaundryBaseRepository {
             await _authLaundryBaseRemoteDataSource.logIn(logInLaundryParams);
         return Right(response);
       } on Exception catch (ex) {
-        return Left(NetworkExceptions.getException(ex));
+        return Left(NetworkExceptions.getDioException(ex));
       }
     } else {
       return const Left(NetworkExceptions.noInternetConnection());

@@ -252,7 +252,8 @@ class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
             children: <Widget>[
               Text(
                 date,
-                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
               ),
               Text(
                 price,

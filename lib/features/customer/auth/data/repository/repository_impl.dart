@@ -31,7 +31,7 @@ class AuthCustomerRepositoryImpl implements AuthCustomerBaseRepository {
             await _authCustomerBaseRemoteDataSource.logIn(logInCustomerParams);
         return Right(response);
       } on Exception catch (ex) {
-        return Left(NetworkExceptions.getException(ex));
+        return Left(NetworkExceptions.getDioException(ex));
       }
     } else {
       return const Left(NetworkExceptions.noInternetConnection());
@@ -47,7 +47,7 @@ class AuthCustomerRepositoryImpl implements AuthCustomerBaseRepository {
             .register(registerCustomerParams);
         return Right(response);
       } on Exception catch (ex) {
-        return Left(NetworkExceptions.getException(ex));
+        return Left(NetworkExceptions.getDioException(ex));
       }
     } else {
       return const Left(NetworkExceptions.noInternetConnection());
@@ -63,7 +63,7 @@ class AuthCustomerRepositoryImpl implements AuthCustomerBaseRepository {
             .forgetPassword(forgetPasswordCustomerParams);
         return Right(response);
       } on Exception catch (ex) {
-        return Left(NetworkExceptions.getException(ex));
+        return Left(NetworkExceptions.getDioException(ex));
       }
     } else {
       return const Left(NetworkExceptions.noInternetConnection());

@@ -51,6 +51,21 @@ android {
         versionName flutterVersionName
     }
 
+
+
+    flavorDimensions "default" //!Note that dimensions if u want to divide ur dimensions for group 
+    productFlavors {
+      production {
+          dimension "default"
+          resValue "string", "app_name", "Laundry Production"
+      }
+      development {
+          dimension "default"
+          applicationIdSuffix ".dev"
+          resValue "string", "app_name", "Laundry Development"
+      }
+  }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.

@@ -15,12 +15,12 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$LogInLaundryState {
+mixin _$LogInLaundState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(LogInLaundryEntity logInLaundryEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$LogInLaundryState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(LogInLaundryEntity logInLaundryEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$LogInLaundryState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(LogInLaundryEntity logInLaundryEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) =>
@@ -69,16 +69,16 @@ mixin _$LogInLaundryState {
 }
 
 /// @nodoc
-abstract class $LogInLaundryStateCopyWith<$Res> {
-  factory $LogInLaundryStateCopyWith(
-          LogInLaundryState value, $Res Function(LogInLaundryState) then) =
-      _$LogInLaundryStateCopyWithImpl<$Res, LogInLaundryState>;
+abstract class $LogInLaundStateCopyWith<$Res> {
+  factory $LogInLaundStateCopyWith(
+          LogInLaundState value, $Res Function(LogInLaundState) then) =
+      _$LogInLaundStateCopyWithImpl<$Res, LogInLaundState>;
 }
 
 /// @nodoc
-class _$LogInLaundryStateCopyWithImpl<$Res, $Val extends LogInLaundryState>
-    implements $LogInLaundryStateCopyWith<$Res> {
-  _$LogInLaundryStateCopyWithImpl(this._value, this._then);
+class _$LogInLaundStateCopyWithImpl<$Res, $Val extends LogInLaundState>
+    implements $LogInLaundStateCopyWith<$Res> {
+  _$LogInLaundStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +95,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$LogInLaundryStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$LogInLaundStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -109,13 +109,13 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LogInLaundryState.initial()';
+    return 'LogInLaundState.initial()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'LogInLaundryState.initial'));
+    properties.add(DiagnosticsProperty('type', 'LogInLaundState.initial'));
   }
 
   @override
@@ -132,7 +132,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(LogInLaundryEntity logInLaundryEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
     return initial();
@@ -143,7 +143,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(LogInLaundryEntity logInLaundryEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
     return initial?.call();
@@ -154,7 +154,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(LogInLaundryEntity logInLaundryEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
@@ -202,7 +202,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   }
 }
 
-abstract class _Initial implements LogInLaundryState {
+abstract class _Initial implements LogInLaundState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -215,7 +215,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$LogInLaundryStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$LogInLaundStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -229,13 +229,13 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LogInLaundryState.loading()';
+    return 'LogInLaundState.loading()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'LogInLaundryState.loading'));
+    properties.add(DiagnosticsProperty('type', 'LogInLaundState.loading'));
   }
 
   @override
@@ -252,7 +252,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(LogInLaundryEntity logInLaundryEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
     return loading();
@@ -263,7 +263,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(LogInLaundryEntity logInLaundryEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
     return loading?.call();
@@ -274,7 +274,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(LogInLaundryEntity logInLaundryEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
@@ -322,7 +322,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   }
 }
 
-abstract class _Loading implements LogInLaundryState {
+abstract class _Loading implements LogInLaundState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -331,51 +331,80 @@ abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({LogInLaundryEntity logInLaundryEntity});
 }
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$LogInLaundryStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$LogInLaundStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? logInLaundryEntity = null,
+  }) {
+    return _then(_$SuccessImpl(
+      null == logInLaundryEntity
+          ? _value.logInLaundryEntity
+          : logInLaundryEntity // ignore: cast_nullable_to_non_nullable
+              as LogInLaundryEntity,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
-  const _$SuccessImpl();
+  const _$SuccessImpl(this.logInLaundryEntity);
+
+  @override
+  final LogInLaundryEntity logInLaundryEntity;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LogInLaundryState.success()';
+    return 'LogInLaundState.success(logInLaundryEntity: $logInLaundryEntity)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'LogInLaundryState.success'));
+    properties
+      ..add(DiagnosticsProperty('type', 'LogInLaundState.success'))
+      ..add(DiagnosticsProperty('logInLaundryEntity', logInLaundryEntity));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessImpl &&
+            (identical(other.logInLaundryEntity, logInLaundryEntity) ||
+                other.logInLaundryEntity == logInLaundryEntity));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, logInLaundryEntity);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(LogInLaundryEntity logInLaundryEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
-    return success();
+    return success(logInLaundryEntity);
   }
 
   @override
@@ -383,10 +412,10 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(LogInLaundryEntity logInLaundryEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
-    return success?.call();
+    return success?.call(logInLaundryEntity);
   }
 
   @override
@@ -394,12 +423,12 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(LogInLaundryEntity logInLaundryEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(logInLaundryEntity);
     }
     return orElse();
   }
@@ -442,8 +471,14 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
   }
 }
 
-abstract class _Success implements LogInLaundryState {
-  const factory _Success() = _$SuccessImpl;
+abstract class _Success implements LogInLaundState {
+  const factory _Success(final LogInLaundryEntity logInLaundryEntity) =
+      _$SuccessImpl;
+
+  LogInLaundryEntity get logInLaundryEntity;
+  @JsonKey(ignore: true)
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -459,7 +494,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$LogInLaundryStateCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$LogInLaundStateCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -497,14 +532,14 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LogInLaundryState.error(networkExceptions: $networkExceptions)';
+    return 'LogInLaundState.error(networkExceptions: $networkExceptions)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'LogInLaundryState.error'))
+      ..add(DiagnosticsProperty('type', 'LogInLaundState.error'))
       ..add(DiagnosticsProperty('networkExceptions', networkExceptions));
   }
 
@@ -531,7 +566,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(LogInLaundryEntity logInLaundryEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
     return error(networkExceptions);
@@ -542,7 +577,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(LogInLaundryEntity logInLaundryEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
     return error?.call(networkExceptions);
@@ -553,7 +588,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(LogInLaundryEntity logInLaundryEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
@@ -601,7 +636,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   }
 }
 
-abstract class _Error implements LogInLaundryState {
+abstract class _Error implements LogInLaundState {
   const factory _Error(final NetworkExceptions networkExceptions) = _$ErrorImpl;
 
   NetworkExceptions get networkExceptions;

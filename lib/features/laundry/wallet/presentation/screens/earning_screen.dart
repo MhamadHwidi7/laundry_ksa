@@ -7,7 +7,8 @@ import 'package:laundry_app/core/constants/text_constants.dart';
 import 'package:laundry_app/core/extensions/screen_size_extension.dart';
 
 class EarningScreen extends StatelessWidget {
-  const EarningScreen({Key? key});
+  final String laundryId;
+   const EarningScreen({Key? key, required this.laundryId});
 
   @override
   Widget build(BuildContext context) {

@@ -107,7 +107,10 @@ class LogInCustomerScreen extends StatelessWidget {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    onPressed: () {})),
+                                    onPressed: () {
+                                      context.pushReplacement(RouterConstants
+                                          .forgetPasswordCustomerScreen);
+                                    })),
                           ],
                         ),
                         SizedBox(
@@ -117,7 +120,7 @@ class LogInCustomerScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(25.0),
                             onPressed: () {
                               context.pushReplacement(
-                                  RouterConstants.homeLaundryScreen);
+                                  RouterConstants.customerHomeScreen);
                             },
                             child: Text(
                               TextConstants.loginButtonText,
@@ -142,7 +145,10 @@ class LogInCustomerScreen extends StatelessWidget {
                                     fontFamily: TextConstants.openSans,
                                     fontSize: 11),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                context.pushReplacement(
+                                    RouterConstants.signUpCustomerScreen);
+                              },
                               disabledColor: ColorConstants.greenAppColor,
                             ),
                           ],
@@ -151,46 +157,10 @@ class LogInCustomerScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                // CupertinoButton(
-                //     child: Text(
-                //       TextConstants.applyToBecomeADriverButtonText,
-                //       style: TextStyle(
-                //         color: ColorConstants.greenAppColor,
-                //         fontFamily: TextConstants.openSans,
-                //         fontSize: 12,
-                //         fontWeight: FontWeight.bold,
-                //       ),
-                //     ),
-                //     onPressed: () {
-                //       context.push(RouterConstants.applyBecomingDriverScreen);
-                //     }),
-                // SizedBox(
-                //   height: context.screenHeight > 600 ? 300 : 600,
-                // ),
+              
               ],
             ),
-            // Positioned(
-            //   left: 0,
-            //   right: 0,
-            //   bottom: 20,
-            //   child: Center(
-            //     child: SizedBox(
-            //       width: context.screenWidth > 600 ? 350 : 300,
-            //       child: CupertinoButton(
-            //         color: ColorConstants.purpleAppColor,
-            //         borderRadius: BorderRadius.circular(25.0),
-            //         onPressed: () {
-            //           context
-            //               .pushReplacement(RouterConstants.homeLaundryScreen);
-            //         },
-            //         child: Text(
-            //           TextConstants.loginButtonText,
-            //           style: TextStyle(color: Colors.white),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
+           
           ],
         ),
       ),

@@ -45,7 +45,9 @@ class SettingScreen extends StatelessWidget {
             height: 10,
           ),
           _buildListTile('Payment Cards', ImageConstants.cardIcon,
-              ColorConstants.purpleAppColor, () {}),
+              ColorConstants.purpleAppColor, () {
+            context.push(RouterConstants.addNewCardScreen);
+          }),
           SizedBox(
             height: 10,
           ),
