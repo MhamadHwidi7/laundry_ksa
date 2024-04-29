@@ -1,13 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/core/constants/color_constants.dart';
 import 'package:laundry_app/core/constants/image_constant.dart';
 import 'package:laundry_app/core/constants/router_constants.dart';
 import 'package:laundry_app/core/constants/text_constants.dart';
-import 'package:laundry_app/core/extensions/screen_size_extension.dart';
 import 'package:laundry_app/core/helper/image_helper.dart';
 import 'package:laundry_app/features/customer/home/presentation/widgets/subscription_widget.dart';
 
@@ -201,18 +199,22 @@ class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
                 ],
               ),
             ),
-            SizedBox(
-              height: screenSize.height * 0.25,
-              child: PageView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 2,
-                itemBuilder: (context, index) {
-                  return const SubscriptionsWidget(points: "19");
-                },
+            GestureDetector(
+              onTap: () =>
+                  context.push(RouterConstants.subscriptionDetailsScreen),
+              child: SizedBox(
+                height: screenSize.height * 0.21,
+                child: PageView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return const SubscriptionsWidget(points: "19");
+                  },
+                ),
               ),
             ),
             SizedBox(
-              height: screenSize.height * 0.25,
+              height: screenSize.height * 0.21,
               child: PageView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 2,
@@ -221,10 +223,13 @@ class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
                 },
               ),
             ),
-            ImageHelper(
-                url: "assets/icons/add.svg",
-                width: screenSize.width * 0.07,
-                height: screenSize.height * 0.07)
+            GestureDetector(
+              onTap: () => context.push(RouterConstants.onDemandScreen),
+              child: ImageHelper(
+                  url: "assets/icons/add.svg",
+                  width: screenSize.width * 0.07,
+                  height: screenSize.height * 0.07),
+            )
           ],
         ),
       )),
@@ -237,7 +242,6 @@ class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
     required String price,
     required String text,
   }) {
-    final bool isIpad = MediaQuery.of(context).size.width > 600;
     return SizedBox(
       width: 100,
       height: 100,
@@ -252,7 +256,8 @@ class _HomeCustomerScreenState extends State<HomeCustomerScreen> {
             children: <Widget>[
               Text(
                 date,
-                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
               ),
               Text(
                 price,

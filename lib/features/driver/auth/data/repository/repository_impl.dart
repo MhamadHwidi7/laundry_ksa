@@ -2,7 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:laundry_app/core/errors/network_exceptions.dart';
 import 'package:laundry_app/core/network/network_info.dart';
-import 'package:laundry_app/features/driver/auth/data/data_source/remote_data_souce.dart';
+import 'package:laundry_app/features/driver/auth/data/data_source/remote_data_source.dart';
+import 'package:laundry_app/features/driver/auth/domain/entity/log_in_entity.dart';
 import 'package:laundry_app/features/driver/auth/domain/params/log_in_params.dart';
 import 'package:laundry_app/features/driver/auth/domain/repository/base_repository.dart';
 
@@ -18,7 +19,7 @@ class AuthDriverRepositoryImpl implements AuthDriverBaseRepository {
         _authDriverBaseRemoteDataSource = authDriverBaseRemoteDataSource;
 
   @override
-  Future<Either<NetworkExceptions, void>> logIn(
+  Future<Either<NetworkExceptions, LogInDriverEntity>> logIn(
       LogInDriverParams logInDriverParams) async {
     if (await _networkInfo.isConnected) {
       try {

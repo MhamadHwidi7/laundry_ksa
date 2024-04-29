@@ -2,9 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:laundry_app/core/errors/network_exceptions.dart';
 import 'package:laundry_app/core/utils/shared_preference_utils.dart';
+import 'package:laundry_app/features/driver/auth/domain/entity/log_in_entity.dart';
+import 'package:laundry_app/features/driver/auth/domain/entity/log_in_entity.dart';
 import 'package:laundry_app/features/driver/auth/domain/params/log_in_params.dart';
 import 'package:laundry_app/features/driver/auth/domain/use_case/log_in_use_case.dart';
 import 'package:meta/meta.dart';
+
+import '../../../domain/entity/log_in_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -28,7 +32,7 @@ class LogInCubit extends Cubit<LogInDriverState> {
       // await _sharedPreferencesUtils.setToken(r.logInData.token);
       // Wait for setToken to complete before calling getToken
       //final token = _sharedPreferencesUtils.getToken();
-      emit(const LogInDriverState.success());
+      emit(LogInDriverState.success(r));
       // Now you can use the token
       if (kDebugMode) {
         // print("Token Here : $token");

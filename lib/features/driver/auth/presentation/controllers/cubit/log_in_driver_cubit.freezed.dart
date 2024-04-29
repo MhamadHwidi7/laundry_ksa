@@ -20,7 +20,7 @@ mixin _$LogInDriverState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(LogInDriverEntity logInDriverEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$LogInDriverState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(LogInDriverEntity logInDriverEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$LogInDriverState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(LogInDriverEntity logInDriverEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) =>
@@ -132,7 +132,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(LogInDriverEntity logInDriverEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
     return initial();
@@ -143,7 +143,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(LogInDriverEntity logInDriverEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
     return initial?.call();
@@ -154,7 +154,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(LogInDriverEntity logInDriverEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
@@ -252,7 +252,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(LogInDriverEntity logInDriverEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
     return loading();
@@ -263,7 +263,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(LogInDriverEntity logInDriverEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
     return loading?.call();
@@ -274,7 +274,7 @@ class _$LoadingImpl with DiagnosticableTreeMixin implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(LogInDriverEntity logInDriverEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
@@ -331,6 +331,8 @@ abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({LogInDriverEntity logInDriverEntity});
 }
 
 /// @nodoc
@@ -340,42 +342,69 @@ class __$$SuccessImplCopyWithImpl<$Res>
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? logInDriverEntity = null,
+  }) {
+    return _then(_$SuccessImpl(
+      null == logInDriverEntity
+          ? _value.logInDriverEntity
+          : logInDriverEntity // ignore: cast_nullable_to_non_nullable
+              as LogInDriverEntity,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
-  const _$SuccessImpl();
+  const _$SuccessImpl(this.logInDriverEntity);
+
+  @override
+  final LogInDriverEntity logInDriverEntity;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'LogInDriverState.success()';
+    return 'LogInDriverState.success(logInDriverEntity: $logInDriverEntity)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'LogInDriverState.success'));
+    properties
+      ..add(DiagnosticsProperty('type', 'LogInDriverState.success'))
+      ..add(DiagnosticsProperty('logInDriverEntity', logInDriverEntity));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessImpl &&
+            (identical(other.logInDriverEntity, logInDriverEntity) ||
+                other.logInDriverEntity == logInDriverEntity));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, logInDriverEntity);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(LogInDriverEntity logInDriverEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
-    return success();
+    return success(logInDriverEntity);
   }
 
   @override
@@ -383,10 +412,10 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(LogInDriverEntity logInDriverEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
-    return success?.call();
+    return success?.call(logInDriverEntity);
   }
 
   @override
@@ -394,12 +423,12 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(LogInDriverEntity logInDriverEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(logInDriverEntity);
     }
     return orElse();
   }
@@ -443,7 +472,13 @@ class _$SuccessImpl with DiagnosticableTreeMixin implements _Success {
 }
 
 abstract class _Success implements LogInDriverState {
-  const factory _Success() = _$SuccessImpl;
+  const factory _Success(final LogInDriverEntity logInDriverEntity) =
+      _$SuccessImpl;
+
+  LogInDriverEntity get logInDriverEntity;
+  @JsonKey(ignore: true)
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -531,7 +566,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(LogInDriverEntity logInDriverEntity) success,
     required TResult Function(NetworkExceptions networkExceptions) error,
   }) {
     return error(networkExceptions);
@@ -542,7 +577,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(LogInDriverEntity logInDriverEntity)? success,
     TResult? Function(NetworkExceptions networkExceptions)? error,
   }) {
     return error?.call(networkExceptions);
@@ -553,7 +588,7 @@ class _$ErrorImpl with DiagnosticableTreeMixin implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(LogInDriverEntity logInDriverEntity)? success,
     TResult Function(NetworkExceptions networkExceptions)? error,
     required TResult orElse(),
   }) {

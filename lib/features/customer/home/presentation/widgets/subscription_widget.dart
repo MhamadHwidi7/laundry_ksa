@@ -12,7 +12,6 @@ class SubscriptionsWidget extends StatelessWidget {
     Size screenSize = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: screenSize.height * 0.25,
       child: Stack(
         children: [
           Padding(
@@ -20,17 +19,16 @@ class SubscriptionsWidget extends StatelessWidget {
               horizontal: screenSize.width * 0.06,
               vertical: screenSize.height * 0.02,
             ),
-            child: FittedBox(
-              child: ImageHelper(
-                url: "assets/images/laundry.png",
-                width: screenSize.width,
-                height: screenSize.height * 0.2,
-              ),
+            child: ImageHelper(
+              fit: BoxFit.fill,
+              url: "assets/images/laundry.png",
+              width: screenSize.width,
+              height: screenSize.height * 0.2,
             ),
           ),
           Positioned(
             left: screenSize.width * 0.1,
-            bottom: screenSize.height * 0.12,
+            bottom: screenSize.height * 0.1,
             child: Text(
               points,
               style: const TextStyle(
@@ -42,10 +40,10 @@ class SubscriptionsWidget extends StatelessWidget {
           ),
           Positioned(
             top: 25,
-            left: screenSize.width * 0.6,
-            child: Text(
+            left: screenSize.width * 0.63,
+            child: const Text(
               "Press to Subscribe",
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
                 color: ColorConstants.backGroundAppColor,
@@ -54,7 +52,7 @@ class SubscriptionsWidget extends StatelessWidget {
           ),
           Positioned(
             left: screenSize.width * 0.25,
-            bottom: screenSize.height * 0.125,
+            bottom: screenSize.height * 0.11,
             child: const Text(
               "Points",
               style: TextStyle(
@@ -65,7 +63,19 @@ class SubscriptionsWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 28,
+            left: screenSize.width * 0.3,
+            bottom: screenSize.height * 0.09,
+            child: const Text(
+              "Free Delivery",
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+                color: ColorConstants.backGroundAppColor,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 0,
             right: 0,
             left: 0,
             child: Padding(
@@ -78,13 +88,13 @@ class SubscriptionsWidget extends StatelessWidget {
                 child: ImageHelper(
                   url: "assets/icons/Rectanglesvg.svg",
                   width: screenSize.width,
-                  height: screenSize.height * 0.06,
+                  height: screenSize.height * 0.065,
                 ),
               ),
             ),
           ),
           Positioned(
-            bottom: screenSize.height * 0.07,
+            bottom: screenSize.height * 0.04,
             left: screenSize.width * 0.1,
             child: Container(
               width: screenSize.width * 0.2,
@@ -105,8 +115,8 @@ class SubscriptionsWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: screenSize.width * 0.31,
-            bottom: screenSize.height * 0.065,
+            left: screenSize.width * 0.32,
+            bottom: screenSize.height * 0.035,
             child: const Text(
               "Pick whatever cloth you want and whatever\n service you need within 1 week",
               style: TextStyle(
@@ -117,7 +127,7 @@ class SubscriptionsWidget extends StatelessWidget {
           ),
           Positioned(
             right: screenSize.width * 0.1,
-            bottom: screenSize.height * 0.065,
+            bottom: screenSize.height * 0.035,
             child: Text(
               "$points SR",
               style: const TextStyle(

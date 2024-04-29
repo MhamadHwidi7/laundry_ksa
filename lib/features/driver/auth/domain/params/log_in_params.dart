@@ -1,5 +1,5 @@
 class LogInDriverParams {
-  final int phoneNumber;
+  final String phoneNumber;
   final String password;
 
   LogInDriverParams({required this.phoneNumber, required this.password});

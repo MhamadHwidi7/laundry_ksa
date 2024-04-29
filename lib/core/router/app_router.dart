@@ -1,10 +1,14 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/core/constants/router_constants.dart';
 import 'package:laundry_app/features/customer/auth/presentation/screens/log_in_customer_screen.dart';
 import 'package:laundry_app/features/customer/auth/presentation/screens/sign_up_customer_screen.dart';
 import 'package:laundry_app/features/customer/home/presentation/screens/home_customer_screen.dart';
+import 'package:laundry_app/features/customer/home/presentation/screens/on_demand_screen.dart';
+import 'package:laundry_app/features/customer/home/presentation/screens/subscription_details_screen.dart';
 import 'package:laundry_app/features/customer/setting/presentation/screens/account_details_screen.dart';
 import 'package:laundry_app/features/customer/setting/presentation/screens/setting_screen.dart';
+import 'package:laundry_app/features/driver/auth/presentation/controllers/cubit/log_in_driver_cubit.dart';
 import 'package:laundry_app/features/driver/auth/presentation/screens/apply_becoming_driver_screen.dart';
 import 'package:laundry_app/features/driver/auth/presentation/screens/forget_password_screen.dart';
 import 'package:laundry_app/features/driver/auth/presentation/screens/log_in_driver_screen.dart';
@@ -14,10 +18,11 @@ import 'package:laundry_app/features/customer/map/presentation/screens/map_scree
 import 'package:laundry_app/features/laundry/auth/presentation/screens/log_in_screen.dart';
 import 'package:laundry_app/features/laundry/home/presentation/screens/home_screen.dart';
 import 'package:laundry_app/features/laundry/wallet/presentation/screens/earning_screen.dart';
+import 'package:laundry_app/injection.dart';
 
 class AppRouter {
   static final router = GoRouter(
-    initialLocation: RouterConstants.customerHomeScreen,
+    initialLocation: RouterConstants.logInDriverScreen,
     routes: [
       GoRoute(
         path: RouterConstants.loginLaundryScreen,
@@ -37,7 +42,10 @@ class AppRouter {
       ),
       GoRoute(
         path: RouterConstants.logInDriverScreen,
-        builder: (context, state) => const LogInDriverScreen(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<LogInCubit>(),
+          child: const LogInDriverScreen(),
+        ),
       ),
       GoRoute(
         path: RouterConstants.applyBecomingDriverScreen,
@@ -74,6 +82,14 @@ class AppRouter {
       GoRoute(
         path: RouterConstants.accountDetailsScreen,
         builder: (context, state) => const AccountDetailsScreen(),
+      ),
+      GoRoute(
+        path: RouterConstants.subscriptionDetailsScreen,
+        builder: (context, state) => const SubscriptionDetailsScreen(),
+      ),
+      GoRoute(
+        path: RouterConstants.onDemandScreen,
+        builder: (context, state) => const OnDemandScreen(),
       ),
     ],
   );

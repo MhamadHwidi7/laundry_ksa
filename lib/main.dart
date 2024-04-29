@@ -1,11 +1,12 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:laundry_app/core/constants/color_constants.dart';
 import 'package:laundry_app/core/router/app_router.dart';
+import 'package:laundry_app/injection.dart';
 
 void main() async {
-  runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
+  configureDependencies();
+  runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

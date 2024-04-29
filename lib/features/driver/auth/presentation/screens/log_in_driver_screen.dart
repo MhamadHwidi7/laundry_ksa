@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/core/constants/color_constants.dart';
@@ -8,12 +9,16 @@ import 'package:laundry_app/core/constants/image_constant.dart';
 import 'package:laundry_app/core/constants/router_constants.dart';
 import 'package:laundry_app/core/constants/text_constants.dart';
 import 'package:laundry_app/core/extensions/screen_size_extension.dart';
+import 'package:laundry_app/features/driver/auth/domain/params/log_in_params.dart';
+import 'package:laundry_app/features/driver/auth/presentation/controllers/cubit/log_in_driver_cubit.dart';
 
 class LogInDriverScreen extends StatelessWidget {
   const LogInDriverScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController phoneNumberController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return CupertinoPageScaffold(
       backgroundColor: ColorConstants.backGroundAppColor,
       navigationBar: CupertinoNavigationBar(
@@ -55,6 +60,7 @@ class LogInDriverScreen extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 8.0, right: 8),
                             child: CupertinoTextField.borderless(
+                              controller: phoneNumberController,
                               placeholderStyle: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: CupertinoColors.black,
@@ -73,6 +79,7 @@ class LogInDriverScreen extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.only(left: 8.0, right: 8),
                             child: CupertinoTextField.borderless(
+                              controller: passwordController,
                               prefix: Padding(
                                   padding: EdgeInsets.only(left: 10, right: 10),
                                   child: SvgPicture.asset(
@@ -144,17 +151,38 @@ class LogInDriverScreen extends StatelessWidget {
               child: Center(
                 child: SizedBox(
                   width: context.screenWidth > 600 ? 350 : 300,
-                  child: CupertinoButton(
-                    color: ColorConstants.purpleAppColor,
-                    borderRadius: BorderRadius.circular(25.0),
-                    onPressed: () {
-                      context
-                          .pushReplacement(RouterConstants.homeLaundryScreen);
+                  child: BlocBuilder<LogInCubit, LogInDriverState>(
+                    builder: (context, state) {
+                      return state.maybeWhen(
+                        loading: () => const CupertinoActivityIndicator(),
+                        initial: () => CupertinoButton(
+                          color: ColorConstants.purpleAppColor,
+                          borderRadius: BorderRadius.circular(25.0),
+                          onPressed: () {
+                            context.read<LogInCubit>().emitLogInDriver(
+                                LogInDriverParams(
+                                    phoneNumber: phoneNumberController.text,
+                                    password: passwordController.text));
+                          },
+                          child: const Text(
+                            TextConstants.loginButtonText,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        orElse: () => CupertinoButton(
+                          color: ColorConstants.purpleAppColor,
+                          borderRadius: BorderRadius.circular(25.0),
+                          onPressed: () {
+                            context.pushReplacement(
+                                RouterConstants.homeLaundryScreen);
+                          },
+                          child: Text(
+                            TextConstants.loginButtonText,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      );
                     },
-                    child: Text(
-                      TextConstants.loginButtonText,
-                      style: TextStyle(color: Colors.white),
-                    ),
                   ),
                 ),
               ),
