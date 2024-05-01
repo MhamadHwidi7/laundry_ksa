@@ -1,0 +1,10 @@
+{
+    "dart.sdkPaths": [
+        "C:\\src\\flutter\\bin\\cache\\dart-sdk\\bin"
+    ],
+    "dart.flutterSdkPaths": [
+        "C:\\src\\flutter\\bin"
+    ],
+    "dart.sdkPath": "C:\\src\\flutter\\bin\\cache\\dart-sdk\\bin",
+    "dart.flutterSdkPath": "C:\\src\\flutter",
+}

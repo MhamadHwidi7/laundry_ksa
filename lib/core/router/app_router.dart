@@ -1,9 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:laundry_app/core/constants/router_constants.dart';
-import 'package:laundry_app/core/utils/shared_preference_utils.dart';
 import 'package:laundry_app/features/customer/auth/presentation/screens/forget_password_customer_screen.dart';
 import 'package:laundry_app/features/customer/auth/presentation/screens/log_in_customer_screen.dart';
+import 'package:laundry_app/features/customer/auth/presentation/screens/number_screen.dart';
+import 'package:laundry_app/features/customer/auth/presentation/screens/price_list_screen.dart';
 import 'package:laundry_app/features/customer/auth/presentation/screens/sign_up_customer_screen.dart';
 import 'package:laundry_app/features/customer/home/presentation/screens/home_customer_screen.dart';
 import 'package:laundry_app/features/customer/payment/presentation/controllers/cubit/payment_cubit.dart';
@@ -16,10 +17,9 @@ import 'package:laundry_app/features/driver/auth/presentation/screens/forget_pas
 import 'package:laundry_app/features/driver/auth/presentation/screens/log_in_driver_screen.dart';
 import 'package:laundry_app/features/driver/home/presentation/screens/accomplishment_screen.dart';
 import 'package:laundry_app/features/driver/home/presentation/screens/home_driver_screen.dart';
-import 'package:laundry_app/features/customer/map/presentation/screens/map_screen.dart';
 import 'package:laundry_app/features/laundry/auth/presentation/controllers/cubit/log_in_laundry_cubit.dart';
 import 'package:laundry_app/features/laundry/auth/presentation/screens/log_in_screen.dart';
-import 'package:laundry_app/features/laundry/home/presentation/controllers/cubit/laundry_orders_cubit.dart';
+import 'package:laundry_app/features/laundry/home/presentation/controllers/laundry_orders_cubit.dart';
 import 'package:laundry_app/features/laundry/home/presentation/screens/home_screen.dart';
 import 'package:laundry_app/features/laundry/wallet/presentation/controllers/cubit/get_wallet_cubit.dart';
 import 'package:laundry_app/features/laundry/wallet/presentation/screens/earning_screen.dart';
@@ -27,7 +27,7 @@ import 'package:laundry_app/injection.dart';
 
 class AppRouter {
   static final router = GoRouter(
-    initialLocation: RouterConstants.driverHomeScreen,
+    initialLocation: RouterConstants.addNewCardScreen,
     routes: [
       GoRoute(
         path: RouterConstants.loginLaundryScreen,
@@ -116,6 +116,14 @@ class AppRouter {
       GoRoute(
         path: RouterConstants.cardScreen,
         builder: (context, state) => const CardScreen(),
+      ),
+      GoRoute(
+        path: RouterConstants.numberScreen,
+        builder: (context, state) => const NumberScreen(),
+      ),
+      GoRoute(
+        path: RouterConstants.priceListScreen,
+        builder: (context, state) => const PriceListScreen(),
       ),
     ],
   );
