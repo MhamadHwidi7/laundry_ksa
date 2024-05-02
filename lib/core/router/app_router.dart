@@ -7,6 +7,9 @@ import 'package:laundry_app/features/customer/auth/presentation/screens/number_s
 import 'package:laundry_app/features/customer/auth/presentation/screens/price_list_screen.dart';
 import 'package:laundry_app/features/customer/auth/presentation/screens/sign_up_customer_screen.dart';
 import 'package:laundry_app/features/customer/home/presentation/screens/home_customer_screen.dart';
+import 'package:laundry_app/features/customer/home/presentation/screens/on_demand_screen.dart';
+import 'package:laundry_app/features/customer/home/presentation/screens/on_demand_submit_screen.dart';
+import 'package:laundry_app/features/customer/home/presentation/screens/subscription_details_screen.dart';
 import 'package:laundry_app/features/customer/payment/presentation/controllers/cubit/payment_cubit.dart';
 import 'package:laundry_app/features/customer/payment/presentation/screens/add_new_card_screen.dart';
 import 'package:laundry_app/features/customer/payment/presentation/screens/card_screen.dart';
@@ -27,7 +30,7 @@ import 'package:laundry_app/injection.dart';
 
 class AppRouter {
   static final router = GoRouter(
-    initialLocation: RouterConstants.addNewCardScreen,
+    initialLocation: RouterConstants.onDemandSubmitScreen,
     routes: [
       GoRoute(
         path: RouterConstants.loginLaundryScreen,
@@ -124,6 +127,18 @@ class AppRouter {
       GoRoute(
         path: RouterConstants.priceListScreen,
         builder: (context, state) => const PriceListScreen(),
+      ),
+      GoRoute(
+        path: RouterConstants.subscriptionDetailsScreen,
+        builder: (context, state) => const SubscriptionDetailsScreen(),
+      ),
+      GoRoute(
+        path: RouterConstants.onDemandScreen,
+        builder: (context, state) => const OnDemandScreen(),
+      ),
+      GoRoute(
+        path: RouterConstants.onDemandSubmitScreen,
+        builder: (context, state) => const OnDemandSubmitScreen(),
       ),
     ],
   );

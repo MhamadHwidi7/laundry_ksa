@@ -21,4 +21,8 @@ class RouterConstants {
   static const String cardScreen = "/card-screen";
   static const String numberScreen = "/number-screen";
   static const String priceListScreen = "/price_list_screen";
+  static const String subscriptionDetailsScreen =
+      "/subscription_details_screen";
+  static const String onDemandScreen = "/on_demand_screen";
+  static const String onDemandSubmitScreen = "/on_demand_submit_screen";
 }
